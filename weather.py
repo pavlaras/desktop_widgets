@@ -24,7 +24,7 @@ from gi.repository import Gtk, GObject
 class EntryWindow(Gtk.Window):
 
     def __init__(self):
-        # Create the Gtk.Window
+        # Create the Gtk.Window and the label. Change the window title as you please
         Gtk.Window.__init__(self, title="Ο καιρός σήμερα ")
         self.set_size_request(300, 200)
 
@@ -32,6 +32,7 @@ class EntryWindow(Gtk.Window):
 
         # create a Gtk.Dialog
         dialog = Gtk.Dialog()
+	    # Gtk dialog text. Change it to whatever you like
         dialog.set_title("Ο καιρός σήμερα ")
         dialog.set_size_request(250, 30)
         # Furthermore, the dialog is on top of the parent window
@@ -43,6 +44,7 @@ class EntryWindow(Gtk.Window):
         self.add(vbox)
 
         # We add the question , hint, for user to know what to type in the box
+    	# You change it to your language
         question = Gtk.Button()
         question.set_label("Εισάγετε πόλη: ")
         # Make the question visible
@@ -63,6 +65,7 @@ class EntryWindow(Gtk.Window):
         # Make button visible
         vbox.pack_start(button, False, True, 0)
 
+    	# This is the output print area
         self.label = Gtk.Label()
         self.label.get_text()
         vbox.pack_start(self.label, True, True, 0)
@@ -71,7 +74,9 @@ class EntryWindow(Gtk.Window):
     def on_click_me_clicked(self, button):
         city_name = self.entry.get_text()
         # complete_url variable to store
-        # complete url address
+        # complete url address.
+    	# Change &lang=el to your language to get the weather results to your language
+    	# Delete &units=metric if you do not want to use the metric system
         complete_url = base_url + "appid=" + api_key + "&units=metric" + "&lang=el" + "&q=" + city_name
         # get method of requests module
         # return response object
